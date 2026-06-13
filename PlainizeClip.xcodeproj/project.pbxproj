@@ -1,0 +1,165 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		020000000000000000000001 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020000000000000000000101 /* main.swift */; };
+		020000000000000000000002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020000000000000000000102 /* AppDelegate.swift */; };
+		020000000000000000000003 /* ArgumentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020000000000000000000103 /* ArgumentParser.swift */; };
+		020000000000000000000004 /* PlainizeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020000000000000000000104 /* PlainizeOptions.swift */; };
+		020000000000000000000005 /* Plainizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020000000000000000000105 /* Plainizer.swift */; };
+		020000000000000000000006 /* PasteboardPlainizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020000000000000000000106 /* PasteboardPlainizer.swift */; };
+		020000000000000000000007 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020000000000000000000107 /* PreferencesWindowController.swift */; };
+		020000000000000000000008 /* plainize-clip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 020000000000000000000109 /* plainize-clip */; };
+		020000000000000000000011 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020000000000000000000301 /* Cocoa.framework */; };
+		020000000000000000000012 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020000000000000000000302 /* SwiftUI.framework */; };
+		020000000000000000000021 /* PlainizeClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020000000000000000000201 /* PlainizeClipTests.swift */; };
+		020000000000000000000022 /* ArgumentParser.swift in Tests */ = {isa = PBXBuildFile; fileRef = 020000000000000000000103 /* ArgumentParser.swift */; };
+		020000000000000000000023 /* PlainizeOptions.swift in Tests */ = {isa = PBXBuildFile; fileRef = 020000000000000000000104 /* PlainizeOptions.swift */; };
+		020000000000000000000024 /* Plainizer.swift in Tests */ = {isa = PBXBuildFile; fileRef = 020000000000000000000105 /* Plainizer.swift */; };
+		020000000000000000000025 /* PasteboardPlainizer.swift in Tests */ = {isa = PBXBuildFile; fileRef = 020000000000000000000106 /* PasteboardPlainizer.swift */; };
+		020000000000000000000026 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020000000000000000000303 /* XCTest.framework */; };
+		020000000000000000000027 /* Cocoa.framework in Test Frameworks */ = {isa = PBXBuildFile; fileRef = 020000000000000000000301 /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		020000000000000000000601 /* Copy Bundle Wrapper Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 1;
+			files = (
+				020000000000000000000008 /* plainize-clip in CopyFiles */,
+			);
+			name = "Copy Bundle Wrapper Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		020000000000000000000101 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		020000000000000000000102 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		020000000000000000000103 /* ArgumentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgumentParser.swift; sourceTree = "<group>"; };
+		020000000000000000000104 /* PlainizeOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainizeOptions.swift; sourceTree = "<group>"; };
+		020000000000000000000105 /* Plainizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plainizer.swift; sourceTree = "<group>"; };
+		020000000000000000000106 /* PasteboardPlainizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardPlainizer.swift; sourceTree = "<group>"; };
+		020000000000000000000107 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		020000000000000000000108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		020000000000000000000109 /* plainize-clip */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "plainize-clip"; sourceTree = "<group>"; };
+		020000000000000000000201 /* PlainizeClipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainizeClipTests.swift; sourceTree = "<group>"; };
+		020000000000000000000301 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		020000000000000000000302 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		020000000000000000000303 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		020000000000000000000501 /* Plainize Clip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Plainize Clip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		020000000000000000000502 /* PlainizeClipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlainizeClipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		020000000000000000000701 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (020000000000000000000011, 020000000000000000000012, ); runOnlyForDeploymentPostprocessing = 0; };
+		020000000000000000000702 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (020000000000000000000026, 020000000000000000000027, ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		020000000000000000000801 = {
+			isa = PBXGroup;
+			children = (
+				020000000000000000000802 /* PlainizeClip */,
+				020000000000000000000803 /* PlainizeClipTests */,
+				020000000000000000000804 /* Frameworks */,
+				020000000000000000000805 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		020000000000000000000802 /* PlainizeClip */ = {
+			isa = PBXGroup;
+			children = (
+				020000000000000000000108 /* Info.plist */,
+				020000000000000000000101 /* main.swift */,
+				020000000000000000000102 /* AppDelegate.swift */,
+				020000000000000000000103 /* ArgumentParser.swift */,
+				020000000000000000000104 /* PlainizeOptions.swift */,
+				020000000000000000000105 /* Plainizer.swift */,
+				020000000000000000000106 /* PasteboardPlainizer.swift */,
+				020000000000000000000107 /* PreferencesWindowController.swift */,
+				020000000000000000000109 /* plainize-clip */,
+			);
+			path = PlainizeClip;
+			sourceTree = "<group>";
+		};
+		020000000000000000000803 /* PlainizeClipTests */ = {isa = PBXGroup; children = (020000000000000000000201 /* PlainizeClipTests.swift */, ); path = PlainizeClipTests; sourceTree = "<group>"; };
+		020000000000000000000804 /* Frameworks */ = {isa = PBXGroup; children = (020000000000000000000301 /* Cocoa.framework */, 020000000000000000000302 /* SwiftUI.framework */, 020000000000000000000303 /* XCTest.framework */, ); name = Frameworks; sourceTree = "<group>"; };
+		020000000000000000000805 /* Products */ = {isa = PBXGroup; children = (020000000000000000000501 /* Plainize Clip.app */, 020000000000000000000502 /* PlainizeClipTests.xctest */, ); name = Products; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		020000000000000000000901 /* PlainizeClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 020000000000000000000A01 /* Build configuration list for PBXNativeTarget "PlainizeClip" */;
+			buildPhases = (020000000000000000000B01 /* Sources */, 020000000000000000000701 /* Frameworks */, 020000000000000000000C01 /* Resources */, 020000000000000000000601 /* Copy Bundle Wrapper Files */, );
+			buildRules = ();
+			dependencies = ();
+			name = PlainizeClip;
+			productName = "Plainize Clip";
+			productReference = 020000000000000000000501 /* Plainize Clip.app */;
+			productType = "com.apple.product-type.application";
+		};
+		020000000000000000000902 /* PlainizeClipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 020000000000000000000A02 /* Build configuration list for PBXNativeTarget "PlainizeClipTests" */;
+			buildPhases = (020000000000000000000B02 /* Sources */, 020000000000000000000702 /* Frameworks */, );
+			buildRules = ();
+			dependencies = ();
+			name = PlainizeClipTests;
+			productName = PlainizeClipTests;
+			productReference = 020000000000000000000502 /* PlainizeClipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		020000000000000000000A10 /* Project object */ = {
+			isa = PBXProject;
+			attributes = { LastUpgradeCheck = 1540; };
+			buildConfigurationList = 020000000000000000000A00 /* Build configuration list for PBXProject "PlainizeClip" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (en, Base, );
+			mainGroup = 020000000000000000000801;
+			productRefGroup = 020000000000000000000805 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (020000000000000000000901 /* PlainizeClip */, 020000000000000000000902 /* PlainizeClipTests */, );
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		020000000000000000000C01 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		020000000000000000000B01 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (020000000000000000000001, 020000000000000000000002, 020000000000000000000003, 020000000000000000000004, 020000000000000000000005, 020000000000000000000006, 020000000000000000000007, ); runOnlyForDeploymentPostprocessing = 0; };
+		020000000000000000000B02 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (020000000000000000000021, 020000000000000000000022, 020000000000000000000023, 020000000000000000000024, 020000000000000000000025, ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		020000000000000000000D01 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = { ALWAYS_SEARCH_USER_PATHS = NO; CODE_SIGNING_ALLOWED = NO; MACOSX_DEPLOYMENT_TARGET = 13.0; SDKROOT = macosx; SWIFT_VERSION = 5.0; }; name = Debug; };
+		020000000000000000000D02 /* Release */ = {isa = XCBuildConfiguration; buildSettings = { ALWAYS_SEARCH_USER_PATHS = NO; CODE_SIGNING_ALLOWED = NO; MACOSX_DEPLOYMENT_TARGET = 13.0; SDKROOT = macosx; SWIFT_VERSION = 5.0; }; name = Release; };
+		020000000000000000000D11 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = { ALWAYS_SEARCH_USER_PATHS = NO; CODE_SIGNING_ALLOWED = NO; ENABLE_TESTABILITY = YES; INFOPLIST_FILE = PlainizeClip/Info.plist; PRODUCT_BUNDLE_IDENTIFIER = com.mindflakes.PlainizeClip; PRODUCT_MODULE_NAME = PlainizeClip; PRODUCT_NAME = "Plainize Clip"; SWIFT_VERSION = 5.0; WRAPPER_EXTENSION = app; }; name = Debug; };
+		020000000000000000000D12 /* Release */ = {isa = XCBuildConfiguration; buildSettings = { ALWAYS_SEARCH_USER_PATHS = NO; CODE_SIGNING_ALLOWED = NO; INFOPLIST_FILE = PlainizeClip/Info.plist; PRODUCT_BUNDLE_IDENTIFIER = com.mindflakes.PlainizeClip; PRODUCT_MODULE_NAME = PlainizeClip; PRODUCT_NAME = "Plainize Clip"; SWIFT_VERSION = 5.0; WRAPPER_EXTENSION = app; }; name = Release; };
+		020000000000000000000D21 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = { ALWAYS_SEARCH_USER_PATHS = NO; CODE_SIGNING_ALLOWED = NO; ENABLE_TESTABILITY = YES; FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks"; PRODUCT_BUNDLE_IDENTIFIER = com.mindflakes.PlainizeClip.tests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; WRAPPER_EXTENSION = xctest; }; name = Debug; };
+		020000000000000000000D22 /* Release */ = {isa = XCBuildConfiguration; buildSettings = { ALWAYS_SEARCH_USER_PATHS = NO; CODE_SIGNING_ALLOWED = NO; FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks"; PRODUCT_BUNDLE_IDENTIFIER = com.mindflakes.PlainizeClip.tests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; WRAPPER_EXTENSION = xctest; }; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		020000000000000000000A00 /* Build configuration list for PBXProject "PlainizeClip" */ = {isa = XCConfigurationList; buildConfigurations = (020000000000000000000D01, 020000000000000000000D02, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
+		020000000000000000000A01 /* Build configuration list for PBXNativeTarget "PlainizeClip" */ = {isa = XCConfigurationList; buildConfigurations = (020000000000000000000D11, 020000000000000000000D12, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
+		020000000000000000000A02 /* Build configuration list for PBXNativeTarget "PlainizeClipTests" */ = {isa = XCConfigurationList; buildConfigurations = (020000000000000000000D21, 020000000000000000000D22, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Debug; };
+/* End XCConfigurationList section */
+	};
+	rootObject = 020000000000000000000A10 /* Project object */;
+}

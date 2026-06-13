@@ -1,0 +1,4 @@
+#!/bin/sh
+
+BINARYPATH=$(dirname "$0")"/Contents/MacOS/Plainize Clip"
+"$BINARYPATH" -t "$@"

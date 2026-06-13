@@ -96,4 +96,4 @@ separate `plain-clip-re` workspace.
 - The window is fixed-size by design because the preference surface is small
   and deterministic.
 - The app currently has no custom app icon or installer packaging.
-- License: TBD.
+- License: MIT.

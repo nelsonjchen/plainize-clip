@@ -8,6 +8,7 @@ inspired by [Plain Clip][plain-clip].
 
 The app is intentionally not a menu bar app and not a resident background app.
 Normal launch performs one pasteboard cleanup pass, then terminates.
+It is not a clipboard manager, and it does not run persistently in the background. Personally, I launch it through Spotlight.
 
 ## Behavior
 
@@ -24,6 +25,14 @@ Preferences:
 - Save persists settings and immediately runs one cleanup pass using those
   settings.
 - Cancel closes without saving.
+
+<img src="Design/plainize-clip-preferences.png" alt="Plainize Clip preferences window" width="520">
+
+From Terminal, open the preferences window directly with:
+
+```bash
+open -a "/Applications/Plainize Clip.app" --args --preferences
+```
 
 CLI wrapper:
 

@@ -148,7 +148,7 @@ private struct PreferencesView: View {
             }
         }
         .toggleStyle(.checkbox)
-        .padding(EdgeInsets(top: 26, leading: 32, bottom: 34, trailing: 32))
+        .padding(EdgeInsets(top: 34, leading: 32, bottom: 34, trailing: 32))
         .frame(width: 520, height: 520)
     }
 

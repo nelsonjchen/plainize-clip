@@ -34,6 +34,27 @@ From Terminal, open the preferences window directly with:
 open -a "/Applications/Plainize Clip.app" --args --preferences
 ```
 
+Preference options:
+
+- Trim each line: removes leading and/or trailing whitespace from every line.
+- Trim whole clipboard: removes whitespace from the start and end of the full
+  clipboard string.
+- Remove blank lines: collapses repeated blank lines.
+- Join wrapped lines: replaces hard line breaks between non-empty lines with a
+  space, useful for copied hard-wrapped prose.
+- Replace tabs with spaces: converts tab characters to plain spaces.
+- Collapse repeated spaces: repeatedly reduces double spaces to one space.
+- Remove invisible control characters: removes low ASCII controls except tab
+  and newline, and cleans common invisible spacing characters such as zero-width
+  spaces.
+- Replace smart quotes: converts curly quotes, guillemets, en dashes, and em
+  dashes to plain ASCII punctuation.
+- Normalize Unicode: converts decomposed Unicode sequences such as `e` plus a
+  combining acute accent into their precomposed form, such as `é`.
+- Convert to ASCII: first romanizes non-Latin scripts best-effort, strips
+  diacritics, maps common punctuation to ASCII, then filters remaining
+  non-ASCII characters.
+
 CLI wrapper:
 
 ```bash

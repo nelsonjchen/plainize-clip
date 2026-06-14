@@ -131,6 +131,46 @@ final class PlainizeClipTests: XCTestCase {
         XCTAssertASCIIOnly(output)
     }
 
+    func testUnicodeExamplePreviewSampleIsCompactAndASCIIOnly() {
+        let output = Plainizer.plainized("中文 한국어 العربية cafe\u{0301}", options: asciiOptions())
+
+        XCTAssertEqual(output, "zhong wen hangug-eo al'rbyt cafe")
+        XCTAssertASCIIOnly(output)
+    }
+
+    func testUnicodeExamplePreviewSampleShowsNormalizationChange() {
+        let output = Plainizer.plainized(
+            "中文 한국어 العربية cafe\u{0301}",
+            options: PlainizeOptions(
+                trimTrailingWhitespace: false,
+                trimLeadingWhitespace: false,
+                removeInvisibleControls: false,
+                removeHardWraps: false,
+                removeBlankLines: false,
+                removeSmartQuotes: false,
+                removeConsecutiveSpaces: false,
+                replaceTabs: false,
+                convertToASCII: false,
+                normalizeUnicode: true,
+                trimWholeString: false
+            )
+        )
+
+        XCTAssertTrue(output.contains("café"))
+        XCTAssertTrue(output.unicodeScalars.contains("\u{00E9}"))
+        XCTAssertFalse(output.unicodeScalars.contains("\u{0301}"))
+    }
+
+    func testUnicodeExamplePreviewSamplePreservesDecomposedAccentWhenNormalizationIsDisabled() {
+        let output = Plainizer.plainized(
+            "中文 한국어 العربية cafe\u{0301}",
+            options: .standard
+        )
+
+        XCTAssertTrue(output.unicodeScalars.contains("\u{0301}"))
+        XCTAssertFalse(output.unicodeScalars.contains("\u{00E9}"))
+    }
+
     func testNonASCIITextIsPreservedWhenASCIIConversionIsDisabled() {
         let input = " العربية\tעברית 日本語 中文 한국어 "
         let output = Plainizer.plainized(

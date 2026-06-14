@@ -1,29 +1,33 @@
 import AppKit
 import SwiftUI
 
+private enum PreferencesLayout {
+    static let width: CGFloat = 520
+    static let height: CGFloat = 700
+    static let contentSize = NSSize(width: width, height: height)
+}
+
 final class PreferencesWindowController: NSWindowController, NSWindowDelegate {
-    private static let contentSize = NSSize(width: 520, height: 520)
     private let onCancel: () -> Void
 
     init(options: PlainizeOptions, onSave: @escaping (PlainizeOptions) -> Void, onCancel: @escaping () -> Void) {
         self.onCancel = onCancel
 
+        let window = NSWindow(
+            contentRect: NSRect(origin: .zero, size: PreferencesLayout.contentSize),
+            styleMask: [.titled, .closable],
+            backing: .buffered,
+            defer: false
+        )
         let view = PreferencesView(
             initialOptions: options,
             onSave: onSave,
             onCancel: onCancel
         )
         let hostingView = NSHostingView(rootView: view)
-        let window = NSWindow(
-            contentRect: NSRect(origin: .zero, size: Self.contentSize),
-            styleMask: [.titled, .closable],
-            backing: .buffered,
-            defer: false
-        )
         window.title = String(localized: "Plainize Clip Preferences")
         window.titleVisibility = .hidden
-        window.minSize = window.frameRect(forContentRect: NSRect(origin: .zero, size: Self.contentSize)).size
-        window.maxSize = window.minSize
+        Self.lock(window, to: PreferencesLayout.contentSize)
         window.contentView = hostingView
         Self.installCenteredTitle(in: window)
         window.center()
@@ -38,6 +42,12 @@ final class PreferencesWindowController: NSWindowController, NSWindowDelegate {
 
     func windowWillClose(_ notification: Notification) {
         onCancel()
+    }
+
+    private static func lock(_ window: NSWindow, to contentSize: NSSize) {
+        let frameSize = window.frameRect(forContentRect: NSRect(origin: .zero, size: contentSize)).size
+        window.minSize = frameSize
+        window.maxSize = frameSize
     }
 
     private static func installCenteredTitle(in window: NSWindow) {
@@ -65,6 +75,14 @@ final class PreferencesWindowController: NSWindowController, NSWindowDelegate {
 
 private struct PreferencesView: View {
     private static let sampleInput = "  \u{201C}Hello\u{201D}\t   world\u{2026}  \n\n  caf\u{00E9}\u{200B} text  "
+    private static let unicodeSampleInput = String(String.UnicodeScalarView([
+        UnicodeScalar(0x4E2D)!, UnicodeScalar(0x6587)!, UnicodeScalar(0x20)!,
+        UnicodeScalar(0xD55C)!, UnicodeScalar(0xAD6D)!, UnicodeScalar(0xC5B4)!, UnicodeScalar(0x20)!,
+        UnicodeScalar(0x0627)!, UnicodeScalar(0x0644)!, UnicodeScalar(0x0639)!, UnicodeScalar(0x0631)!,
+        UnicodeScalar(0x0628)!, UnicodeScalar(0x064A)!, UnicodeScalar(0x0629)!, UnicodeScalar(0x20)!,
+        UnicodeScalar(0x63)!, UnicodeScalar(0x61)!, UnicodeScalar(0x66)!, UnicodeScalar(0x65)!,
+        UnicodeScalar(0x0301)!
+    ]))
 
     @State private var options: PlainizeOptions
 
@@ -122,6 +140,13 @@ private struct PreferencesView: View {
                 after: Plainizer.plainized(Self.sampleInput, options: options)
             )
 
+            PreviewPanel(
+                title: "Unicode example",
+                before: PreviewTextFormatter.visible(Self.unicodeSampleInput),
+                after: PreviewTextFormatter.visible(unicodeSampleOutput),
+                textIsEscaped: true
+            )
+
             Spacer(minLength: 0)
 
             HStack {
@@ -150,7 +175,7 @@ private struct PreferencesView: View {
         }
         .toggleStyle(.checkbox)
         .padding(EdgeInsets(top: 34, leading: 32, bottom: 34, trailing: 32))
-        .frame(width: 520, height: 520)
+        .frame(width: PreferencesLayout.width, height: PreferencesLayout.height)
     }
 
     private var lineTrimBinding: Binding<Bool> {
@@ -181,7 +206,42 @@ private struct PreferencesView: View {
     }
 
     private func updateOptions(_ update: (inout PlainizeOptions) -> Void) {
-        update(&options)
+        var updatedOptions = options
+        update(&updatedOptions)
+        options = updatedOptions
+    }
+
+    private var unicodeSampleOutput: String {
+        if options.convertToASCII {
+            return Plainizer.plainized(Self.unicodeSampleInput, options: options)
+        }
+
+        if options.normalizeUnicode {
+            return Self.unicodeSampleInput.precomposedStringWithCanonicalMapping
+        }
+
+        return Self.unicodeSampleInput
+    }
+}
+
+private enum PreviewTextFormatter {
+    static func visible(_ text: String) -> String {
+        var output = ""
+
+        for scalar in text.unicodeScalars {
+            if scalar == "\t" {
+                output += "\\t"
+            } else if scalar == "\n" {
+                output += "\\n"
+            } else if CharacterSet.nonBaseCharacters.contains(scalar) {
+                let hex = String(scalar.value, radix: 16, uppercase: true)
+                output += "\\u{" + String(repeating: "0", count: max(0, 4 - hex.count)) + hex + "}"
+            } else {
+                output.unicodeScalars.append(scalar)
+            }
+        }
+
+        return output
     }
 }
 
@@ -209,12 +269,21 @@ private struct SettingsSection<Content: View>: View {
 }
 
 private struct PreviewPanel: View {
+    let title: LocalizedStringKey
     let before: String
     let after: String
+    let textIsEscaped: Bool
+
+    init(title: LocalizedStringKey = "Preview", before: String, after: String, textIsEscaped: Bool = false) {
+        self.title = title
+        self.before = before
+        self.after = after
+        self.textIsEscaped = textIsEscaped
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 7) {
-            Text("Preview")
+            Text(title)
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.secondary)
 
@@ -235,16 +304,16 @@ private struct PreviewPanel: View {
                 .foregroundStyle(.secondary)
                 .frame(width: 45, alignment: .trailing)
 
-            Text(visible(text))
+            Text(displayText(for: text))
                 .font(.system(size: 12, design: .monospaced))
                 .lineLimit(2)
+                .truncationMode(.tail)
                 .textSelection(.enabled)
+                .id(displayText(for: text))
         }
     }
 
-    private func visible(_ text: String) -> String {
-        text
-            .replacingOccurrences(of: "\t", with: "\\t")
-            .replacingOccurrences(of: "\n", with: "\\n")
+    private func displayText(for text: String) -> String {
+        textIsEscaped ? text : PreviewTextFormatter.visible(text)
     }
 }

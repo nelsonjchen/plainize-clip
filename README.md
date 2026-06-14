@@ -3,8 +3,8 @@
 <img src="Design/plainize-clip-logo.png" alt="Plainize Clip logo" width="128">
 
 Plainize Clip is a tiny faceless macOS utility that cleans the current text
-pasteboard and quits. It is a modern Swift/AppKit/SwiftUI successor experiment
-inspired by [Plain Clip][plain-clip].
+pasteboard and quits. It is a modern Swift/AppKit/SwiftUI successor inspired by
+[Plain Clip][plain-clip].
 
 The app is intentionally not a menu bar app and not a resident background app.
 Normal launch performs one pasteboard cleanup pass, then terminates.
@@ -160,14 +160,9 @@ Clip 2.5.2 ZIP is available through [Archive.org][plain-clip-archive].
 Plainize Clip keeps similar cleanup options, but it is a new
 Swift/AppKit/SwiftUI implementation for modern direct distribution.
 
-## Notes
+## License
 
-- The preferences window uses a centered titlebar label to match the classic
-  Plain Clip feel while keeping the main content in SwiftUI.
-- The window is fixed-size by design because the preference surface is small
-  and deterministic.
-- The app currently has no installer packaging.
-- License: MIT.
+MIT. See [LICENSE](LICENSE).
 
 [plain-clip]: https://www.bluem.net/en/mac/plain-clip/
 [carsten-bluem]: https://www.bluem.net/

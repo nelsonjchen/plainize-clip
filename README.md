@@ -56,6 +56,21 @@ options include:
 - `-n`: normalize Unicode
 - `-m`: trim the whole string
 
+The ASCII conversion uses best-effort romanization for non-Latin scripts before
+dropping unsupported characters. For example, CJK, Korean, Arabic, Hebrew, and
+Cyrillic text are transliterated approximately instead of causing the clipboard
+to become empty.
+
+## Release Notes
+
+### 0.2.0
+
+- Added draft localizations for the preferences window across Tier 3 languages.
+- Made ASCII conversion safer for non-Latin text by romanizing before filtering
+  to ASCII.
+- Added regression coverage for RTL, CJK, Korean, Cyrillic, and mixed-script
+  pasteboard text.
+
 ## Unsigned Releases
 
 GitHub release builds are packaged as `PlainizeClip-<version>-unsigned.zip`.

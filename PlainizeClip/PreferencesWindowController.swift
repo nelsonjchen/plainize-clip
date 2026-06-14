@@ -20,7 +20,7 @@ final class PreferencesWindowController: NSWindowController, NSWindowDelegate {
             backing: .buffered,
             defer: false
         )
-        window.title = "Plainize Clip Preferences"
+        window.title = String(localized: "Plainize Clip Preferences")
         window.titleVisibility = .hidden
         window.minSize = window.frameRect(forContentRect: NSRect(origin: .zero, size: Self.contentSize)).size
         window.maxSize = window.minSize
@@ -112,6 +112,7 @@ private struct PreferencesView: View {
                 SettingsSection("Unicode") {
                     Toggle("Normalize Unicode", isOn: optionBinding(\.normalizeUnicode))
                     Toggle("Convert to ASCII", isOn: optionBinding(\.convertToASCII))
+                        .help("Non-Latin scripts are romanized best-effort.")
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -185,10 +186,10 @@ private struct PreferencesView: View {
 }
 
 private struct SettingsSection<Content: View>: View {
-    let title: String
+    let title: LocalizedStringKey
     @ViewBuilder let content: Content
 
-    init(_ title: String, @ViewBuilder content: () -> Content) {
+    init(_ title: LocalizedStringKey, @ViewBuilder content: () -> Content) {
         self.title = title
         self.content = content()
     }
@@ -227,7 +228,7 @@ private struct PreviewPanel: View {
         .background(.quaternary.opacity(0.55), in: RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 
-    private func previewRow(_ label: String, text: String) -> some View {
+    private func previewRow(_ label: LocalizedStringKey, text: String) -> some View {
         GridRow(alignment: .top) {
             Text(label)
                 .font(.caption.weight(.semibold))

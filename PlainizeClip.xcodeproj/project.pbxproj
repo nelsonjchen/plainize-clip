@@ -16,6 +16,7 @@
 		020000000000000000000007 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020000000000000000000107 /* PreferencesWindowController.swift */; };
 		020000000000000000000008 /* plainize-clip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 020000000000000000000109 /* plainize-clip */; };
 		020000000000000000000009 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 020000000000000000000110 /* AppIcon.icns */; };
+		02000000000000000000000A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 020000000000000000000111 /* Localizable.xcstrings */; };
 		020000000000000000000011 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020000000000000000000301 /* Cocoa.framework */; };
 		020000000000000000000012 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020000000000000000000302 /* SwiftUI.framework */; };
 		020000000000000000000021 /* PlainizeClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020000000000000000000201 /* PlainizeClipTests.swift */; };
@@ -52,6 +53,7 @@
 		020000000000000000000108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		020000000000000000000109 /* plainize-clip */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "plainize-clip"; sourceTree = "<group>"; };
 		020000000000000000000110 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+		020000000000000000000111 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		020000000000000000000201 /* PlainizeClipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainizeClipTests.swift; sourceTree = "<group>"; };
 		020000000000000000000301 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		020000000000000000000302 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -81,6 +83,7 @@
 			children = (
 				020000000000000000000108 /* Info.plist */,
 				020000000000000000000101 /* main.swift */,
+				020000000000000000000111 /* Localizable.xcstrings */,
 				020000000000000000000102 /* AppDelegate.swift */,
 				020000000000000000000103 /* ArgumentParser.swift */,
 				020000000000000000000104 /* PlainizeOptions.swift */,
@@ -131,7 +134,7 @@
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
-			knownRegions = (en, Base, );
+			knownRegions = (en, Base, de, it, fr, es, ja, "zh-Hans", "pt-BR", nl, pl, ko, "zh-Hant", sv, tr, ru, uk, cs, da, fi, nb, ar, he, );
 			mainGroup = 020000000000000000000801;
 			productRefGroup = 020000000000000000000805 /* Products */;
 			projectDirPath = "";
@@ -141,7 +144,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		020000000000000000000C01 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (020000000000000000000009, ); runOnlyForDeploymentPostprocessing = 0; };
+		020000000000000000000C01 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (020000000000000000000009, 02000000000000000000000A, ); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */

@@ -73,6 +73,86 @@ final class PlainizeClipTests: XCTestCase {
         XCTAssertEqual(output, "Caf\u{00E9}")
     }
 
+    func testASCIIConversionRomanizesLatinAccents() {
+        let output = Plainizer.plainized(
+            "\u{201C}Ärger\u{201D} café Ångström œ ß \u{2014} done\u{2026}",
+            options: asciiOptions()
+        )
+
+        XCTAssertEqual(output, "\"Aerger\" cafe Angstroem oe ss - done...")
+        XCTAssertASCIIOnly(output)
+    }
+
+    func testASCIIConversionRomanizesCJKAndKorean() {
+        let samples = [
+            "日本語\t中文",
+            "한국어 中文",
+            "abc 日本語 xyz"
+        ]
+
+        for sample in samples {
+            let output = Plainizer.plainized(sample, options: asciiOptions())
+            XCTAssertFalse(output.isEmpty, sample)
+            XCTAssertASCIIOnly(output, sample)
+        }
+    }
+
+    func testASCIIConversionRomanizesRTLText() {
+        let samples = [
+            " العربية\tالنص ",
+            " עברית\tטקסט "
+        ]
+
+        for sample in samples {
+            let output = Plainizer.plainized(sample, options: asciiOptions())
+            XCTAssertFalse(output.isEmpty, sample)
+            XCTAssertASCIIOnly(output, sample)
+        }
+    }
+
+    func testASCIIConversionRomanizesCyrillicAndMixedText() {
+        let output = Plainizer.plainized(
+            "Україна Россия abc 日本語 xyz",
+            options: asciiOptions()
+        )
+
+        XCTAssertFalse(output.isEmpty)
+        XCTAssertTrue(output.contains("Ukraina"))
+        XCTAssertTrue(output.contains("Rossia"))
+        XCTAssertTrue(output.contains("abc"))
+        XCTAssertTrue(output.contains("xyz"))
+        XCTAssertASCIIOnly(output)
+    }
+
+    func testASCIIConversionDoesNotBlankUnsupportedSymbols() {
+        let output = Plainizer.plainized("😀", options: asciiOptions())
+
+        XCTAssertEqual(output, "?")
+        XCTAssertASCIIOnly(output)
+    }
+
+    func testNonASCIITextIsPreservedWhenASCIIConversionIsDisabled() {
+        let input = " العربية\tעברית 日本語 中文 한국어 "
+        let output = Plainizer.plainized(
+            input,
+            options: PlainizeOptions(
+                trimTrailingWhitespace: false,
+                trimLeadingWhitespace: false,
+                removeInvisibleControls: false,
+                removeHardWraps: false,
+                removeBlankLines: false,
+                removeSmartQuotes: false,
+                removeConsecutiveSpaces: false,
+                replaceTabs: false,
+                convertToASCII: false,
+                normalizeUnicode: false,
+                trimWholeString: true
+            )
+        )
+
+        XCTAssertEqual(output, "العربية\tעברית 日本語 中文 한국어")
+    }
+
     func testPasteboardRoundTrip() {
         let pasteboard = NSPasteboard.general
         let snapshot = PasteboardSnapshot.capture(from: pasteboard)
@@ -117,6 +197,59 @@ final class PlainizeClipTests: XCTestCase {
         XCTAssertFalse(PasteboardPlainizer.clean(pasteboard, options: .standard))
         XCTAssertEqual(pasteboard.data(forType: type), data)
         XCTAssertNil(pasteboard.string(forType: .string))
+    }
+
+    func testPasteboardRoundTripWithRTLASCIIConversion() {
+        let output = cleanPasteboardString(" العربية\tעברית ", options: asciiOptions())
+
+        XCTAssertFalse(output.isEmpty)
+        XCTAssertASCIIOnly(output)
+    }
+
+    func testPasteboardRoundTripWithCJKASCIIConversion() {
+        let output = cleanPasteboardString(" 日本語\t中文 한국어 ", options: asciiOptions())
+
+        XCTAssertFalse(output.isEmpty)
+        XCTAssertASCIIOnly(output)
+    }
+
+    private func asciiOptions() -> PlainizeOptions {
+        PlainizeOptions(
+            trimTrailingWhitespace: true,
+            trimLeadingWhitespace: true,
+            removeInvisibleControls: true,
+            removeHardWraps: false,
+            removeBlankLines: false,
+            removeSmartQuotes: true,
+            removeConsecutiveSpaces: true,
+            replaceTabs: true,
+            convertToASCII: true,
+            normalizeUnicode: false,
+            trimWholeString: true
+        )
+    }
+
+    private func cleanPasteboardString(_ input: String, options: PlainizeOptions) -> String {
+        let pasteboard = NSPasteboard.general
+        let snapshot = PasteboardSnapshot.capture(from: pasteboard)
+        defer { snapshot.restore(to: pasteboard) }
+
+        pasteboard.clearContents()
+        pasteboard.setString(input, forType: .string)
+
+        XCTAssertTrue(PasteboardPlainizer.clean(pasteboard, options: options))
+        let output = pasteboard.string(forType: .string) ?? ""
+        XCTAssertTrue(pasteboard.types?.contains(.string) == true)
+        return output
+    }
+
+    private func XCTAssertASCIIOnly(_ string: String, _ message: String = "", file: StaticString = #filePath, line: UInt = #line) {
+        XCTAssertTrue(
+            string.unicodeScalars.allSatisfy { $0.value <= 127 },
+            message.isEmpty ? string : message,
+            file: file,
+            line: line
+        )
     }
 }
 

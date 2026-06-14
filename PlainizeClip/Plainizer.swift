@@ -54,25 +54,7 @@ enum Plainizer {
         }
 
         if options.convertToASCII {
-            text = text.replacingCharacters(using: [
-                "Ä": "Ae",
-                "Ö": "Oe",
-                "Ü": "Ue",
-                "ä": "ae",
-                "ö": "oe",
-                "ü": "ue",
-                "ß": "ss",
-                "æ": "ae",
-                "Š": "S",
-                "œ": "oe"
-            ])
-
-            if let data = text.data(using: .ascii, allowLossyConversion: true),
-               let ascii = String(data: data, encoding: .ascii) {
-                text = ascii
-            } else {
-                text = ""
-            }
+            text = text.convertingToPlainASCII()
         }
 
         if options.trimWholeString {
@@ -172,6 +154,87 @@ private extension String {
     }
 
     func replacingCharacters(using replacements: [String: String]) -> String {
+        var text = self
+        for (target, replacement) in replacements {
+            text = text.replacingOccurrences(of: target, with: replacement)
+        }
+        return text
+    }
+
+    func convertingToPlainASCII() -> String {
+        var text = replacingCharacters(usingOrdered: [
+            ("Ä", "Ae"),
+            ("Ö", "Oe"),
+            ("Ü", "Ue"),
+            ("ä", "ae"),
+            ("ö", "oe"),
+            ("ü", "ue"),
+            ("ß", "ss"),
+            ("æ", "ae"),
+            ("Š", "S"),
+            ("œ", "oe")
+        ])
+
+        text = text.applyingTransform(.toLatin, reverse: false) ?? text
+        text = text.applyingTransform(.stripDiacritics, reverse: false) ?? text
+        text = text.replacingCharacters(usingOrdered: [
+            ("\u{2018}", "'"),
+            ("\u{2019}", "'"),
+            ("\u{201A}", "'"),
+            ("\u{201B}", "'"),
+            ("\u{2032}", "'"),
+            ("\u{02BB}", "'"),
+            ("\u{02BC}", "'"),
+            ("\u{02BE}", "'"),
+            ("\u{02BF}", "'"),
+            ("\u{201C}", "\""),
+            ("\u{201D}", "\""),
+            ("\u{201E}", "\""),
+            ("\u{201F}", "\""),
+            ("\u{00AB}", "\""),
+            ("\u{00BB}", "\""),
+            ("\u{2033}", "\""),
+            ("\u{2010}", "-"),
+            ("\u{2011}", "-"),
+            ("\u{2012}", "-"),
+            ("\u{2013}", "-"),
+            ("\u{2014}", "-"),
+            ("\u{2015}", "-"),
+            ("\u{2212}", "-"),
+            ("\u{2026}", "..."),
+            ("\u{00A0}", " "),
+            ("\u{2000}", " "),
+            ("\u{2001}", " "),
+            ("\u{2002}", " "),
+            ("\u{2003}", " "),
+            ("\u{2004}", " "),
+            ("\u{2005}", " "),
+            ("\u{2006}", " "),
+            ("\u{2007}", " "),
+            ("\u{2008}", " "),
+            ("\u{2009}", " "),
+            ("\u{200A}", " ")
+        ])
+
+        var output = ""
+        output.reserveCapacity(text.count)
+
+        for scalar in text.unicodeScalars {
+            if scalar.value <= 127 {
+                output.unicodeScalars.append(scalar)
+            } else if CharacterSet.whitespacesAndNewlines.contains(scalar) {
+                output += " "
+            }
+        }
+
+        if output.isEmpty && !trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return "?"
+        }
+
+        return output
+    }
+
+    func replacingCharacters(usingOrdered replacements: [(String, String)]) -> String {
         var text = self
         for (target, replacement) in replacements {
             text = text.replacingOccurrences(of: target, with: replacement)

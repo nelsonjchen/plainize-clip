@@ -1,19 +1,13 @@
 # Plainize Clip
 
+<img src="Design/plainize-clip-logo.png" alt="Plainize Clip logo" width="128">
+
 Plainize Clip is a tiny faceless macOS utility that cleans the current text
 pasteboard and quits. It is a modern Swift/AppKit/SwiftUI successor experiment
 inspired by [Plain Clip][plain-clip].
 
 The app is intentionally not a menu bar app and not a resident background app.
 Normal launch performs one pasteboard cleanup pass, then terminates.
-
-## Project
-
-- Product: `Plainize Clip.app`
-- Bundle id: `com.mindflakes.PlainizeClip`
-- Platform: macOS 13+
-- UI model: `LSUIElement` faceless app with an on-demand preferences window
-- Source: Swift, SwiftUI, AppKit, XCTest
 
 ## Behavior
 
@@ -53,23 +47,6 @@ options include:
 - `-n`: normalize Unicode
 - `-m`: trim the whole string
 
-## Build
-
-```bash
-xcodebuild -project PlainizeClip.xcodeproj -scheme PlainizeClip -configuration Debug build
-```
-
-The debug app appears under Xcode DerivedData as `Plainize Clip.app`.
-
-## Test
-
-```bash
-xcodebuild -project PlainizeClip.xcodeproj -scheme PlainizeClip -configuration Debug test
-```
-
-The tests cover the argument parser, individual cleaning fixtures, and a
-general pasteboard round trip.
-
 ## Unsigned Releases
 
 GitHub release builds are packaged as `PlainizeClip-<version>-unsigned.zip`.
@@ -92,6 +69,31 @@ quarantine flag for this app only:
 ```bash
 xattr -dr com.apple.quarantine "/Applications/Plainize Clip.app"
 ```
+
+## Project
+
+- Product: `Plainize Clip.app`
+- Bundle id: `com.mindflakes.PlainizeClip`
+- Platform: macOS 13+
+- UI model: `LSUIElement` faceless app with an on-demand preferences window
+- Source: Swift, SwiftUI, AppKit, XCTest
+
+## Build
+
+```bash
+xcodebuild -project PlainizeClip.xcodeproj -scheme PlainizeClip -configuration Debug build
+```
+
+The debug app appears under Xcode DerivedData as `Plainize Clip.app`.
+
+## Test
+
+```bash
+xcodebuild -project PlainizeClip.xcodeproj -scheme PlainizeClip -configuration Debug test
+```
+
+The tests cover the argument parser, individual cleaning fixtures, and a
+general pasteboard round trip.
 
 ## Source Layout
 

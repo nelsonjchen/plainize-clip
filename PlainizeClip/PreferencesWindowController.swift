@@ -81,14 +81,7 @@ final class PreferencesWindowController: NSWindowController, NSWindowDelegate {
 
 private struct PreferencesView: View {
     private static let sampleInput = "  \u{201C}Hello\u{201D}\t   world\u{2026}  \n\n  caf\u{00E9}\u{200B} text  "
-    private static let unicodeSampleInput = String(String.UnicodeScalarView([
-        UnicodeScalar(0x4E2D)!, UnicodeScalar(0x6587)!, UnicodeScalar(0x20)!,
-        UnicodeScalar(0xD55C)!, UnicodeScalar(0xAD6D)!, UnicodeScalar(0xC5B4)!, UnicodeScalar(0x20)!,
-        UnicodeScalar(0x0627)!, UnicodeScalar(0x0644)!, UnicodeScalar(0x0639)!, UnicodeScalar(0x0631)!,
-        UnicodeScalar(0x0628)!, UnicodeScalar(0x064A)!, UnicodeScalar(0x0629)!, UnicodeScalar(0x20)!,
-        UnicodeScalar(0x63)!, UnicodeScalar(0x61)!, UnicodeScalar(0x66)!, UnicodeScalar(0x65)!,
-        UnicodeScalar(0x0301)!
-    ]))
+    private static let unicodeSampleInput = "\u{4E2D}\u{6587} \u{D55C}\u{AD6D}\u{C5B4} \u{0627}\u{0644}\u{0639}\u{0631}\u{0628}\u{064A}\u{0629} cafe\u{0301}"
 
     @State private var options: PlainizeOptions
 

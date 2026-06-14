@@ -81,14 +81,10 @@ jobs:
           set -euo pipefail
 
           readme_url="https://github.com/${GITHUB_REPOSITORY}#unsigned-releases"
-          notes="$(cat <<'NOTES'
-          This release contains an unsigned, not notarized Plainize Clip build.
+          notes="This release contains an unsigned, not notarized Plainize Clip build.
 
           macOS may block the app the first time you open it. Follow the README's Unsigned Releases instructions:
-          README_URL_PLACEHOLDER
-          NOTES
-          )"
-          notes="${notes/README_URL_PLACEHOLDER/$readme_url}"
+          ${readme_url}"
 
           if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
             gh release upload "$GITHUB_REF_NAME" dist/* --clobber

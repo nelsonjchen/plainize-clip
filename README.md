@@ -157,9 +157,9 @@ Plainize Clip borrows the spirit of [Plain Clip][plain-clip] by
 is no longer available from the author's current site, but the original Plain
 Clip 2.5.2 ZIP is available through [Archive.org][plain-clip-archive].
 
-Plainize Clip began after I asked about a Universal/Apple Silicon build or an
-open-source release in private email correspondence with Blüm on July 1, 2024.
-It keeps similar cleanup options, but it is a new Swift/AppKit/SwiftUI
+In private email correspondence with Blüm on July 1, 2024, I asked about a
+Universal/Apple Silicon build or an open-source release of Plain Clip. Plainize
+Clip keeps similar cleanup options, but it is a new Swift/AppKit/SwiftUI
 implementation for modern direct distribution.
 
 ## License

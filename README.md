@@ -19,6 +19,11 @@ Normal app launch:
 3. Writes back plain text only.
 4. Quits.
 
+On first run, Plainize Clip shows a welcome dialog explaining that it cleans
+copied text, does not stay in the Dock or menu bar, and can show preferences
+later by holding Shift while opening the app. The welcome appears once
+automatically and can be shown again from Preferences.
+
 Preferences:
 
 - Hold Shift while launching, or launch with `--preferences`.

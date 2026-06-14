@@ -10,7 +10,12 @@ private enum PreferencesLayout {
 final class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     private let onCancel: () -> Void
 
-    init(options: PlainizeOptions, onSave: @escaping (PlainizeOptions) -> Void, onCancel: @escaping () -> Void) {
+    init(
+        options: PlainizeOptions,
+        onSave: @escaping (PlainizeOptions) -> Void,
+        onCancel: @escaping () -> Void,
+        onShowWelcome: @escaping () -> Void
+    ) {
         self.onCancel = onCancel
 
         let window = NSWindow(
@@ -22,7 +27,8 @@ final class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         let view = PreferencesView(
             initialOptions: options,
             onSave: onSave,
-            onCancel: onCancel
+            onCancel: onCancel,
+            onShowWelcome: onShowWelcome
         )
         let hostingView = NSHostingView(rootView: view)
         window.title = String(localized: "Plainize Clip Preferences")
@@ -88,11 +94,18 @@ private struct PreferencesView: View {
 
     let onSave: (PlainizeOptions) -> Void
     let onCancel: () -> Void
+    let onShowWelcome: () -> Void
 
-    init(initialOptions: PlainizeOptions, onSave: @escaping (PlainizeOptions) -> Void, onCancel: @escaping () -> Void) {
+    init(
+        initialOptions: PlainizeOptions,
+        onSave: @escaping (PlainizeOptions) -> Void,
+        onCancel: @escaping () -> Void,
+        onShowWelcome: @escaping () -> Void
+    ) {
         _options = State(initialValue: initialOptions)
         self.onSave = onSave
         self.onCancel = onCancel
+        self.onShowWelcome = onShowWelcome
     }
 
     var body: some View {
@@ -150,6 +163,16 @@ private struct PreferencesView: View {
             Spacer(minLength: 0)
 
             HStack {
+                Button {
+                    onShowWelcome()
+                } label: {
+                    Image(systemName: "info.circle")
+                }
+                .buttonStyle(.plain)
+                .font(.system(size: 19))
+                .foregroundStyle(.secondary)
+                .help("Show welcome")
+
                 Button {
                     NSWorkspace.shared.open(URL(string: "https://github.com/nelsonjchen/plainize-clip")!)
                 } label: {

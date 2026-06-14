@@ -1,6 +1,94 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "Clean Clipboard": {
+      "comment": "Primary button in the first-run dialog; runs the normal pasteboard cleanup once.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clean Clipboard"
+          }
+        }
+      }
+    },
+    "GitHub": {
+      "comment": "Button in the first-run dialog that opens the project page.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GitHub"
+          }
+        }
+      }
+    },
+    "Open Preferences": {
+      "comment": "Button in the first-run dialog that opens the preferences window.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Preferences"
+          }
+        }
+      }
+    },
+    "OK": {
+      "comment": "Dismiss button for the welcome dialog when opened from preferences.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Plainize Clip cleans copied text, then quits. It does not stay in the Dock or menu bar.\n\nTo change cleanup options later, hold Shift while opening Plainize Clip.\n\nThis welcome is shown once. You can show it again from Preferences.": {
+      "comment": "Informative text in the first-run dialog explaining the faceless launch model and how to access preferences later.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plainize Clip cleans copied text, then quits. It does not stay in the Dock or menu bar.\n\nTo change cleanup options later, hold Shift while opening Plainize Clip.\n\nThis welcome is shown once. You can show it again from Preferences."
+          }
+        }
+      }
+    },
+    "Quit": {
+      "comment": "Button in the first-run dialog that exits without cleaning the clipboard.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quit"
+          }
+        }
+      }
+    },
+    "Show welcome": {
+      "comment": "Tooltip for the preferences button that reopens the welcome dialog.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show welcome"
+          }
+        }
+      }
+    },
+    "Welcome to Plainize Clip": {
+      "comment": "Title of the first-run dialog.",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to Plainize Clip"
+          }
+        }
+      }
+    },
     "After": {
       "comment": "Label for cleaned preview text. Draft non-English translation; native-speaker review recommended.",
       "localizations": {

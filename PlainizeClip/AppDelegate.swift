@@ -1,4 +1,12 @@
 import AppKit
+import SwiftUI
+
+private enum WelcomeChoice {
+    case cleanClipboard
+    case openPreferences
+    case openProjectPage
+    case dismiss
+}
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var preferencesWindowController: PreferencesWindowController?
@@ -33,6 +41,26 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
+        if shouldShowWelcome() {
+            switch showFirstRunDialog() {
+            case .cleanClipboard:
+                markWelcomeShown()
+                runCleaner(with: PlainizeOptions.load())
+                NSApp.terminate(nil)
+            case .openPreferences:
+                markWelcomeShown()
+                showPreferences()
+            case .openProjectPage:
+                markWelcomeShown()
+                openProjectPage()
+                NSApp.terminate(nil)
+            case .dismiss:
+                markWelcomeShown()
+                NSApp.terminate(nil)
+            }
+            return
+        }
+
         runCleaner(with: PlainizeOptions.load())
         NSApp.terminate(nil)
     }
@@ -48,6 +76,37 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         return NSEvent.modifierFlags.contains(.shift)
     }
 
+    private func shouldShowWelcome(_ defaults: UserDefaults = .standard) -> Bool {
+        let value = defaults.string(forKey: "highestVersionUsed") ?? ""
+        return value.isEmpty
+    }
+
+    private func markWelcomeShown(_ defaults: UserDefaults = .standard) {
+        defaults.set(currentBuildVersion, forKey: "highestVersionUsed")
+    }
+
+    private var currentBuildVersion: String {
+        Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
+    }
+
+    private func showFirstRunDialog() -> WelcomeChoice {
+        WelcomeDialogController.run(buttons: [
+            WelcomeDialogButton(title: String(localized: "Clean Clipboard"), choice: .cleanClipboard),
+            WelcomeDialogButton(title: String(localized: "Open Preferences"), choice: .openPreferences),
+            WelcomeDialogButton(title: String(localized: "GitHub"), choice: .openProjectPage),
+            WelcomeDialogButton(title: String(localized: "Quit"), choice: .dismiss, isDefault: true)
+        ])
+    }
+
+    private func showWelcomeInfoDialog() {
+        if WelcomeDialogController.run(buttons: [
+            WelcomeDialogButton(title: String(localized: "OK"), choice: .dismiss, isDefault: true),
+            WelcomeDialogButton(title: String(localized: "GitHub"), choice: .openProjectPage)
+        ]) == .openProjectPage {
+            openProjectPage()
+        }
+    }
+
     private func showPreferences() {
         let controller = PreferencesWindowController(
             options: PlainizeOptions.load(),
@@ -58,11 +117,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             },
             onCancel: {
                 NSApp.terminate(nil)
+            },
+            onShowWelcome: { [weak self] in
+                self?.showWelcomeInfoDialog()
             }
         )
         preferencesWindowController = controller
         controller.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)
+    }
+
+    private func openProjectPage() {
+        NSWorkspace.shared.open(URL(string: "https://github.com/nelsonjchen/plainize-clip")!)
     }
 
     @discardableResult
@@ -72,5 +138,133 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             NSSound.beep()
         }
         return changed
+    }
+}
+
+private struct WelcomeDialogButton: Identifiable {
+    let id = UUID()
+    let title: String
+    let choice: WelcomeChoice
+    let isDefault: Bool
+
+    init(title: String, choice: WelcomeChoice, isDefault: Bool = false) {
+        self.title = title
+        self.choice = choice
+        self.isDefault = isDefault
+    }
+}
+
+private final class WelcomeDialogController: NSWindowController {
+    private var choice: WelcomeChoice = .dismiss
+
+    init(buttons: [WelcomeDialogButton]) {
+        let contentSize = NSSize(width: 380, height: 610)
+        let window = NSPanel(
+            contentRect: NSRect(origin: .zero, size: contentSize),
+            styleMask: [.borderless],
+            backing: .buffered,
+            defer: false
+        )
+        window.isOpaque = false
+        window.backgroundColor = .clear
+        window.hasShadow = true
+        window.isMovableByWindowBackground = true
+        window.collectionBehavior = [.transient]
+
+        super.init(window: window)
+
+        let view = WelcomeDialogView(buttons: buttons) { [weak self] choice in
+            self?.finish(with: choice)
+        }
+        window.contentView = NSHostingView(rootView: view)
+        window.center()
+    }
+
+    required init?(coder: NSCoder) {
+        nil
+    }
+
+    static func run(buttons: [WelcomeDialogButton]) -> WelcomeChoice {
+        let controller = WelcomeDialogController(buttons: buttons)
+        guard let window = controller.window else {
+            return .dismiss
+        }
+
+        controller.showWindow(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        NSApp.runModal(for: window)
+        return controller.choice
+    }
+
+    private func finish(with choice: WelcomeChoice) {
+        self.choice = choice
+        NSApp.stopModal()
+        close()
+    }
+}
+
+private struct WelcomeDialogView: View {
+    let buttons: [WelcomeDialogButton]
+    let onSelect: (WelcomeChoice) -> Void
+
+    var body: some View {
+        VStack(spacing: 24) {
+            Image(nsImage: NSApp.applicationIconImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 82, height: 82)
+                .shadow(color: .black.opacity(0.15), radius: 4, y: 2)
+                .accessibilityHidden(true)
+
+            VStack(spacing: 16) {
+                Text("Welcome to Plainize Clip")
+                    .font(.title2.weight(.semibold))
+                    .multilineTextAlignment(.center)
+
+                Text("Plainize Clip cleans copied text, then quits. It does not stay in the Dock or menu bar.\n\nTo change cleanup options later, hold Shift while opening Plainize Clip.\n\nThis welcome is shown once. You can show it again from Preferences.")
+                    .font(.body)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            Spacer(minLength: 0)
+
+            VStack(spacing: 10) {
+                ForEach(buttons) { button in
+                    if button.isDefault {
+                        welcomeButton(button)
+                            .keyboardShortcut(.defaultAction)
+                    } else {
+                        welcomeButton(button)
+                    }
+                }
+            }
+        }
+        .padding(EdgeInsets(top: 44, leading: 34, bottom: 32, trailing: 34))
+        .frame(width: 380, height: 610)
+        .background(Color(nsColor: .windowBackgroundColor), in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+    }
+
+    @ViewBuilder
+    private func welcomeButton(_ button: WelcomeDialogButton) -> some View {
+        let buttonView = Button {
+            onSelect(button.choice)
+        } label: {
+            Text(button.title)
+                .font(.system(size: 16, weight: .medium))
+                .frame(maxWidth: .infinity, minHeight: 38)
+        }
+        .controlSize(.large)
+
+        if button.isDefault {
+            buttonView
+                .buttonStyle(.plain)
+                .foregroundStyle(.white)
+                .background(Color.accentColor, in: Capsule())
+                .contentShape(Capsule())
+        } else {
+            buttonView
+                .buttonStyle(.bordered)
+        }
     }
 }

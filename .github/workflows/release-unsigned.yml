@@ -50,7 +50,6 @@ jobs:
           zip_name="PlainizeClip-${version}-unsigned.zip"
           mkdir -p dist
           ditto -c -k --keepParent "$app_path" "dist/$zip_name"
-          shasum -a 256 "dist/$zip_name" > "dist/$zip_name.sha256"
 
           echo "APP_PATH=$app_path" >> "$GITHUB_ENV"
           echo "ZIP_NAME=$zip_name" >> "$GITHUB_ENV"
@@ -81,14 +80,15 @@ jobs:
         run: |
           set -euo pipefail
 
+          readme_url="https://github.com/${GITHUB_REPOSITORY}#unsigned-releases"
           notes="$(cat <<'NOTES'
           This release contains an unsigned, not notarized Plainize Clip build.
 
-          macOS may block the app the first time you open it. Follow the README's Unsigned Releases instructions: unzip the app, move it to /Applications, try opening it once, then use System Settings > Privacy & Security > Open Anyway for Plainize Clip.
-
-          The ZIP is accompanied by a SHA-256 checksum file.
+          macOS may block the app the first time you open it. Follow the README's Unsigned Releases instructions:
+          README_URL_PLACEHOLDER
           NOTES
           )"
+          notes="${notes/README_URL_PLACEHOLDER/$readme_url}"
 
           if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
             gh release upload "$GITHUB_REF_NAME" dist/* --clobber

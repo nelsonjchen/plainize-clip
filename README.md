@@ -10,6 +10,34 @@ The app is intentionally not a menu bar app and not a resident background app.
 Normal launch performs one pasteboard cleanup pass, then terminates.
 It is not a clipboard manager, and it does not run persistently in the background. Personally, I launch it through Spotlight.
 
+## Download
+
+Download Plainize Clip from the [GitHub Releases][github-releases] page.
+Release notes are kept in [RELEASE_NOTES.md][release-notes].
+
+## Unsigned Releases
+
+GitHub release builds are packaged as `PlainizeClip-<version>-unsigned.zip`.
+They are not Developer ID signed or notarized, so macOS may block the app the
+first time you open it.
+
+To open an unsigned build:
+
+1. Download and unzip the release.
+2. Move `Plainize Clip.app` to `/Applications`.
+3. Try to open it once.
+4. Open System Settings > Privacy & Security.
+5. In Security, click Open Anyway for Plainize Clip.
+6. Confirm that you trust the app and open it again.
+
+Apple documents this flow in [Open a Mac app from an unknown developer][apple-open-unknown].
+If macOS does not show Open Anyway and you trust the downloaded copy, remove the
+quarantine flag for this app only:
+
+```bash
+xattr -dr com.apple.quarantine "/Applications/Plainize Clip.app"
+```
+
 ## Behavior
 
 Normal app launch:
@@ -87,39 +115,6 @@ dropping unsupported characters. For example, CJK, Korean, Arabic, Hebrew, and
 Cyrillic text are transliterated approximately instead of causing the clipboard
 to become empty.
 
-## Release Notes
-
-### 0.2.0
-
-- Added draft localizations for the preferences window across Tier 3 languages.
-- Made ASCII conversion safer for non-Latin text by romanizing before filtering
-  to ASCII.
-- Added regression coverage for RTL, CJK, Korean, Cyrillic, and mixed-script
-  pasteboard text.
-
-## Unsigned Releases
-
-GitHub release builds are packaged as `PlainizeClip-<version>-unsigned.zip`.
-They are not Developer ID signed or notarized, so macOS may block the app the
-first time you open it.
-
-To open an unsigned build:
-
-1. Download and unzip the release.
-2. Move `Plainize Clip.app` to `/Applications`.
-3. Try to open it once.
-4. Open System Settings > Privacy & Security.
-5. In Security, click Open Anyway for Plainize Clip.
-6. Confirm that you trust the app and open it again.
-
-Apple documents this flow in [Open a Mac app from an unknown developer][apple-open-unknown].
-If macOS does not show Open Anyway and you trust the downloaded copy, remove the
-quarantine flag for this app only:
-
-```bash
-xattr -dr com.apple.quarantine "/Applications/Plainize Clip.app"
-```
-
 ## Project
 
 - Product: `Plainize Clip.app`
@@ -177,4 +172,6 @@ Swift/AppKit/SwiftUI implementation for modern direct distribution.
 [plain-clip]: https://www.bluem.net/en/mac/plain-clip/
 [carsten-bluem]: https://www.bluem.net/
 [plain-clip-archive]: https://web.archive.org/web/20250331212359/https://www.bluem.net/files/plain-clip-2.5.2.zip
+[github-releases]: https://github.com/nelsonjchen/plainize-clip/releases
+[release-notes]: RELEASE_NOTES.md
 [apple-open-unknown]: https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac

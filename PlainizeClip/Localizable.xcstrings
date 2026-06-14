@@ -9,6 +9,132 @@
             "state": "translated",
             "value": "Clean Clipboard"
           }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "تنظيف الحافظة"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Vyčistit schránku"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ryd udklipsholder"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zwischenablage bereinigen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Limpiar portapapeles"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Siisti leikepöytä"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nettoyer le presse-papiers"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "נקה את הלוח"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Pulisci appunti"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "クリップボードを整える"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "클립보드 정리"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Rydd utklippstavle"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Klembord opschonen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Wyczyść schowek"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Limpar área de transferência"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Очистить буфер обмена"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Rensa urklipp"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Panoyu temizle"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Очистити буфер обміну"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "清理剪贴板"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "清理剪貼簿"
+          }
         }
       }
     },
@@ -18,6 +144,132 @@
         "en": {
           "stringUnit": {
             "state": "translated",
+            "value": "GitHub"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "GitHub"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
             "value": "GitHub"
           }
         }
@@ -31,6 +283,132 @@
             "state": "translated",
             "value": "Open Preferences"
           }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "فتح التفضيلات"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Otevřít předvolby"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Åbn indstillinger"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Einstellungen öffnen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Abrir preferencias"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Avaa asetukset"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ouvrir les préférences"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "פתח העדפות"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Apri Preferenze"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "環境設定を開く"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "환경설정 열기"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Åpne innstillinger"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Voorkeuren openen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Otwórz preferencje"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Abrir Preferências"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Открыть настройки"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Öppna inställningar"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Tercihleri aç"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Відкрити параметри"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "打开偏好设置"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "開啟偏好設定"
+          }
         }
       }
     },
@@ -41,6 +419,132 @@
           "stringUnit": {
             "state": "translated",
             "value": "OK"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "موافق"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "אישור"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "확인"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Tamam"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "OK"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "好"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "好"
           }
         }
       }
@@ -53,6 +557,132 @@
             "state": "translated",
             "value": "Plainize Clip cleans copied text, then quits. It does not stay in the Dock or menu bar.\n\nTo change cleanup options later, hold Shift while opening Plainize Clip.\n\nThis welcome is shown once. You can show it again from Preferences."
           }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ينظف Plainize Clip النص المنسوخ، ثم يُغلق. لا يبقى في Dock أو شريط القوائم.\n\nلتغيير خيارات التنظيف لاحقًا، اضغط مع الاستمرار على Shift أثناء فتح Plainize Clip.\n\nتظهر رسالة الترحيب هذه مرة واحدة. يمكنك عرضها مرة أخرى من التفضيلات."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip vyčistí zkopírovaný text a potom se ukončí. Nezůstává v Docku ani v řádku nabídek.\n\nChcete-li později změnit možnosti čištění, při otevírání Plainize Clip podržte Shift.\n\nToto uvítání se zobrazí jen jednou. Znovu ho můžete zobrazit v Předvolbách."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip rydder op i kopieret tekst og afslutter derefter. Programmet bliver ikke i Dock eller menulinjen.\n\nHvis du vil ændre oprydningsindstillinger senere, skal du holde Skift nede, mens du åbner Plainize Clip.\n\nDenne velkomst vises kun én gang. Du kan vise den igen fra Indstillinger."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip bereinigt kopierten Text und beendet sich dann. Es bleibt nicht im Dock oder in der Menüleiste.\n\nUm die Bereinigungsoptionen später zu ändern, halte beim Öffnen von Plainize Clip die Umschalttaste gedrückt.\n\nDiese Begrüßung wird nur einmal angezeigt. Du kannst sie in den Einstellungen erneut anzeigen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip limpia el texto copiado y luego se cierra. No permanece en el Dock ni en la barra de menús.\n\nPara cambiar las opciones de limpieza más tarde, mantén pulsada la tecla Mayús al abrir Plainize Clip.\n\nEste mensaje de bienvenida solo se muestra una vez. Puedes volver a verlo desde Preferencias."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip siistii kopioidun tekstin ja sulkeutuu sitten. Se ei jää Dockiin tai valikkoriville.\n\nVoit muuttaa siistimisasetuksia myöhemmin pitämällä Shift-näppäintä painettuna, kun avaat Plainize Clipin.\n\nTämä tervetuloikkuna näytetään vain kerran. Voit näyttää sen uudelleen Asetuksista."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip nettoie le texte copié, puis quitte. Il ne reste pas dans le Dock ni dans la barre des menus.\n\nPour modifier les options de nettoyage plus tard, maintenez la touche Maj enfoncée pendant l’ouverture de Plainize Clip.\n\nCe message de bienvenue ne s’affiche qu’une seule fois. Vous pouvez le revoir depuis les préférences."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip מנקה טקסט שהועתק, ואז נסגר. הוא לא נשאר ב-Dock או בשורת התפריטים.\n\nכדי לשנות את אפשרויות הניקוי מאוחר יותר, החזק את Shift בזמן פתיחת Plainize Clip.\n\nברכת הפתיחה הזו מוצגת פעם אחת בלבד. אפשר להציג אותה שוב מתוך ההעדפות."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip pulisce il testo copiato e poi si chiude. Non rimane nel Dock né nella barra dei menu.\n\nPer modificare in seguito le opzioni di pulizia, tieni premuto Maiusc mentre apri Plainize Clip.\n\nQuesto messaggio di benvenuto viene mostrato una sola volta. Puoi visualizzarlo di nuovo dalle Preferenze."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clipはコピーしたテキストを整えてから終了します。Dockやメニューバーには常駐しません。\n\nあとでクリーンアップ設定を変更するには、Shiftキーを押しながらPlainize Clipを開きます。\n\nこのようこそ画面は一度だけ表示されます。環境設定からもう一度表示できます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip은 복사한 텍스트를 정리한 뒤 종료됩니다. Dock이나 메뉴 막대에 계속 남아 있지 않습니다.\n\n나중에 정리 옵션을 변경하려면 Shift 키를 누른 상태로 Plainize Clip을 여세요.\n\n이 환영 화면은 한 번만 표시됩니다. 환경설정에서 다시 볼 수 있습니다."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip rydder opp i kopiert tekst og avslutter deretter. Den blir ikke værende i Dock eller menylinjen.\n\nHvis du vil endre oppryddingsvalg senere, holder du Shift inne mens du åpner Plainize Clip.\n\nDenne velkomsten vises bare én gang. Du kan vise den igjen fra Innstillinger."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip schoont gekopieerde tekst op en sluit daarna af. Het blijft niet in het Dock of de menubalk staan.\n\nHoud Shift ingedrukt terwijl je Plainize Clip opent om later de opschoonopties te wijzigen.\n\nDit welkomstbericht wordt maar één keer getoond. Je kunt het opnieuw weergeven vanuit Voorkeuren."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip czyści skopiowany tekst, a następnie kończy działanie. Nie pozostaje w Docku ani na pasku menu.\n\nAby później zmienić opcje czyszczenia, przytrzymaj Shift podczas otwierania Plainize Clip.\n\nTo powitanie jest wyświetlane tylko raz. Możesz wyświetlić je ponownie w Preferencjach."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "O Plainize Clip limpa o texto copiado e depois encerra. Ele não fica no Dock nem na barra de menus.\n\nPara alterar as opções de limpeza depois, mantenha Shift pressionado ao abrir o Plainize Clip.\n\nEsta mensagem de boas-vindas aparece apenas uma vez. Você pode vê-la novamente em Preferências."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip очищает скопированный текст, а затем завершает работу. Он не остается в Dock или строке меню.\n\nЧтобы позже изменить параметры очистки, удерживайте Shift при открытии Plainize Clip.\n\nЭто приветствие показывается только один раз. Его можно снова открыть в настройках."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip rensar kopierad text och avslutas sedan. Det ligger inte kvar i Dock eller menyraden.\n\nOm du vill ändra rensningsalternativ senare håller du ned Skift medan du öppnar Plainize Clip.\n\nDen här välkomsten visas bara en gång. Du kan visa den igen från Inställningar."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip kopyalanan metni temizler, sonra kapanır. Dock’ta veya menü çubuğunda kalmaz.\n\nTemizleme seçeneklerini daha sonra değiştirmek için Plainize Clip’i açarken Shift tuşunu basılı tutun.\n\nBu karşılama yalnızca bir kez gösterilir. Tercihler’den yeniden gösterebilirsiniz."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip очищує скопійований текст, а потім завершує роботу. Він не залишається в Dock або рядку меню.\n\nЩоб пізніше змінити параметри очищення, утримуйте Shift під час відкриття Plainize Clip.\n\nЦе привітання показується лише один раз. Його можна знову відкрити з Параметрів."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip 会清理已复制的文本，然后退出。它不会停留在 Dock 或菜单栏中。\n\n若要稍后更改清理选项，请在打开 Plainize Clip 时按住 Shift。\n\n此欢迎界面只会自动显示一次。你可以从“偏好设置”中再次显示它。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip 會清理已拷貝的文字，然後結束。它不會停留在 Dock 或選單列中。\n\n若要稍後變更清理選項，請在開啟 Plainize Clip 時按住 Shift。\n\n此歡迎畫面只會自動顯示一次。你可以從「偏好設定」再次顯示。"
+          }
         }
       }
     },
@@ -63,6 +693,132 @@
           "stringUnit": {
             "state": "translated",
             "value": "Quit"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "إنهاء"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ukončit"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Afslut"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Beenden"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Salir"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Lopeta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Quitter"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "צא"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Esci"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "終了"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "종료"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Avslutt"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Stop"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zakończ"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Sair"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Выйти"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Avsluta"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Çık"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Вийти"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "退出"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "結束"
           }
         }
       }
@@ -75,6 +831,132 @@
             "state": "translated",
             "value": "Show welcome"
           }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "إظهار الترحيب"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zobrazit uvítání"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Vis velkomst"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Begrüßung anzeigen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Mostrar bienvenida"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Näytä tervetuloikkuna"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Afficher l’accueil"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "הצג ברכת פתיחה"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Mostra benvenuto"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ようこそ画面を表示"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "환영 화면 보기"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Vis velkomst"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Welkomstbericht tonen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Pokaż powitanie"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Mostrar boas-vindas"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Показать приветствие"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Visa välkomstmeddelande"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Karşılamayı göster"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Показати привітання"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "显示欢迎界面"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "顯示歡迎畫面"
+          }
         }
       }
     },
@@ -85,6 +967,132 @@
           "stringUnit": {
             "state": "translated",
             "value": "Welcome to Plainize Clip"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "مرحبًا بك في Plainize Clip"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Vítejte v Plainize Clip"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Velkommen til Plainize Clip"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Willkommen bei Plainize Clip"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Te damos la bienvenida a Plainize Clip"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Tervetuloa Plainize Clipiin"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Bienvenue dans Plainize Clip"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "ברוך הבא ל-Plainize Clip"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Benvenuto in Plainize Clip"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clipへようこそ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip에 오신 것을 환영합니다"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Velkommen til Plainize Clip"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Welkom bij Plainize Clip"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Witamy w Plainize Clip"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Boas-vindas ao Plainize Clip"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Добро пожаловать в Plainize Clip"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Välkommen till Plainize Clip"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Plainize Clip’e hoş geldiniz"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Вітаємо в Plainize Clip"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "欢迎使用 Plainize Clip"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "歡迎使用 Plainize Clip"
           }
         }
       }

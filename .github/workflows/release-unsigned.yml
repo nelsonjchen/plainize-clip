@@ -1,0 +1,92 @@
+name: Unsigned Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build unsigned ZIP
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Build Release app
+        run: |
+          xcodebuild \
+            -project PlainizeClip.xcodeproj \
+            -scheme PlainizeClip \
+            -configuration Release \
+            -derivedDataPath "$RUNNER_TEMP/PlainizeClipDerivedData" \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Package unsigned app
+        run: |
+          set -euo pipefail
+
+          app_path="$RUNNER_TEMP/PlainizeClipDerivedData/Build/Products/Release/Plainize Clip.app"
+          if [ ! -d "$app_path" ]; then
+            echo "Missing built app at $app_path" >&2
+            exit 1
+          fi
+
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            version="$GITHUB_REF_NAME"
+          else
+            version="manual-${GITHUB_RUN_NUMBER}-${GITHUB_SHA::7}"
+          fi
+
+          zip_name="PlainizeClip-${version}-unsigned.zip"
+          mkdir -p dist
+          ditto -c -k --keepParent "$app_path" "dist/$zip_name"
+          shasum -a 256 "dist/$zip_name" > "dist/$zip_name.sha256"
+
+          echo "APP_PATH=$app_path" >> "$GITHUB_ENV"
+          echo "ZIP_NAME=$zip_name" >> "$GITHUB_ENV"
+
+      - name: Confirm non-Developer ID signing
+        run: |
+          set -euo pipefail
+
+          signing_info="$(codesign -dv "$APP_PATH" 2>&1 || true)"
+          echo "$signing_info"
+
+          if echo "$signing_info" | grep -q "TeamIdentifier=not set"; then
+            echo "No Developer ID team identifier is present."
+          else
+            echo "::warning::Built app may include a team identifier; inspect signing output above."
+          fi
+
+      - name: Upload unsigned ZIP artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: plainize-clip-unsigned
+          path: dist/*
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          notes="Unsigned, not notarized Plainize Clip build. macOS may require explicit approval in System Settings > Privacy & Security before first launch."
+
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" dist/* --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" dist/* \
+              --title "$GITHUB_REF_NAME" \
+              --notes "$notes"
+          fi

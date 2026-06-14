@@ -121,7 +121,7 @@ Swift/AppKit/SwiftUI implementation for modern direct distribution.
   Plain Clip feel while keeping the main content in SwiftUI.
 - The window is fixed-size by design because the preference surface is small
   and deterministic.
-- The app currently has no custom app icon or installer packaging.
+- The app currently has no installer packaging.
 - License: MIT.
 
 [plain-clip]: https://www.bluem.net/en/mac/plain-clip/

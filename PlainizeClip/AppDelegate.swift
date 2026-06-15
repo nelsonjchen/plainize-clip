@@ -10,6 +10,7 @@ private enum WelcomeChoice {
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var preferencesWindowController: PreferencesWindowController?
+    private var welcomeDialogController: WelcomeDialogController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         PlainizeOptions.registerDefaults()
@@ -98,12 +99,24 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         ])
     }
 
-    private func showWelcomeInfoDialog() {
-        if WelcomeDialogController.run(buttons: [
+    private func showWelcomeInfoDialog(attachedTo parentWindow: NSWindow?) {
+        let buttons = [
             WelcomeDialogButton(title: String(localized: "OK"), choice: .dismiss, isDefault: true),
             WelcomeDialogButton(title: String(localized: "GitHub"), choice: .openProjectPage)
-        ]) == .openProjectPage {
-            openProjectPage()
+        ]
+
+        guard let parentWindow else {
+            if WelcomeDialogController.run(buttons: buttons) == .openProjectPage {
+                openProjectPage()
+            }
+            return
+        }
+
+        welcomeDialogController = WelcomeDialogController.presentSheet(buttons: buttons, modalFor: parentWindow) { [weak self] choice in
+            self?.welcomeDialogController = nil
+            if choice == .openProjectPage {
+                self?.openProjectPage()
+            }
         }
     }
 
@@ -119,7 +132,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 NSApp.terminate(nil)
             },
             onShowWelcome: { [weak self] in
-                self?.showWelcomeInfoDialog()
+                self?.showWelcomeInfoDialog(attachedTo: self?.preferencesWindowController?.window)
             }
         )
         preferencesWindowController = controller
@@ -196,9 +209,34 @@ private final class WelcomeDialogController: NSWindowController {
         return controller.choice
     }
 
+    static func presentSheet(
+        buttons: [WelcomeDialogButton],
+        modalFor parentWindow: NSWindow,
+        completion: @escaping (WelcomeChoice) -> Void
+    ) -> WelcomeDialogController {
+        let controller = WelcomeDialogController(buttons: buttons)
+        guard let window = controller.window else {
+            completion(.dismiss)
+            return controller
+        }
+
+        parentWindow.beginSheet(window) { _ in
+            window.orderOut(nil)
+            controller.close()
+            completion(controller.choice)
+        }
+        return controller
+    }
+
     private func finish(with choice: WelcomeChoice) {
         self.choice = choice
+        if let window, let sheetParent = window.sheetParent {
+            sheetParent.endSheet(window)
+            return
+        }
+
         NSApp.stopModal()
+        window?.orderOut(nil)
         close()
     }
 }

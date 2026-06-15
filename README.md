@@ -138,20 +138,20 @@ Plainize Clip borrows the spirit of [Plain Clip][plain-clip] by
 [Carsten Blüm][carsten-bluem]: stay invisible, do one job, and quit. Plainize
 Clip is an independent project and is not affiliated with Plain Clip or Blüm.
 
-In private email correspondence with Blüm in 2024, I asked about a
-Universal/Apple Silicon build or an open-source release of Plain Clip. He
-replied that Plain Clip was not intended to be abandoned, but that open-sourcing
-the older codebase had obstacles to resolve. In 2026, after noticing Plain Clip
-was not available from the author's current site, appeared to still be
-Intel-only, and did not appear to have a source release, I built Plainize Clip
-as a separate modern implementation.
+In private email correspondence with Blüm in 2024, I asked about my interest in
+an Apple Silicon version or an open-source release of Plain Clip. He replied
+that Plain Clip was not intended to be abandoned, but that open-sourcing the
+older codebase had obstacles to resolve. In 2026, after noticing Plain Clip was
+not available from the author's current site, the archived 2.5.2 build was
+Intel-only, and there did not appear to be a source release, I built Plainize
+Clip as a separate modern implementation.
 
 Blüm later clarified that Plain Clip is still in daily use by him and that he
 has resumed work on it, including an Apple Silicon build. Plainize Clip remains
 a separate Swift/AppKit/SwiftUI implementation for direct distribution. Readers
 interested in Plain Clip itself should refer to Blüm's site or contact him
 directly. An older Plain Clip 2.5.2 ZIP is available through
-[Archive.org][plain-clip-archive].
+[Archive.org][plain-clip-archive], but that archived build is Intel-only.
 
 ## License
 

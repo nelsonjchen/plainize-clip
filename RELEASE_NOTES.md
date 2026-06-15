@@ -1,5 +1,10 @@
 # Release Notes
 
+## 0.3.2
+
+- Fixed the Preferences info dialog so the whole OK button responds to clicks,
+  not just the text inside it.
+
 ## 0.3.1
 
 - Fixed the welcome dialog shown from Preferences so OK closes it reliably.

@@ -174,7 +174,7 @@ private final class WelcomeDialogController: NSWindowController {
     init(buttons: [WelcomeDialogButton], completion: ((WelcomeChoice) -> Void)? = nil) {
         self.completion = completion
         let contentSize = NSSize(width: 380, height: 610)
-        let window = NSPanel(
+        let window = WelcomePanel(
             contentRect: NSRect(origin: .zero, size: contentSize),
             styleMask: [.borderless],
             backing: .buffered,
@@ -185,6 +185,7 @@ private final class WelcomeDialogController: NSWindowController {
         window.hasShadow = true
         window.isMovableByWindowBackground = true
         window.collectionBehavior = [.transient]
+        window.hidesOnDeactivate = false
 
         super.init(window: window)
 
@@ -248,6 +249,16 @@ private final class WelcomeDialogController: NSWindowController {
     }
 }
 
+private final class WelcomePanel: NSPanel {
+    override var canBecomeKey: Bool {
+        true
+    }
+
+    override var canBecomeMain: Bool {
+        true
+    }
+}
+
 private extension NSWindow {
     func center(over parentWindow: NSWindow) {
         let parentFrame = parentWindow.frame
@@ -287,12 +298,7 @@ private struct WelcomeDialogView: View {
 
             VStack(spacing: 10) {
                 ForEach(buttons) { button in
-                    if button.isDefault {
-                        welcomeButton(button)
-                            .keyboardShortcut(.defaultAction)
-                    } else {
-                        welcomeButton(button)
-                    }
+                    welcomeButton(button)
                 }
             }
         }
@@ -303,24 +309,30 @@ private struct WelcomeDialogView: View {
 
     @ViewBuilder
     private func welcomeButton(_ button: WelcomeDialogButton) -> some View {
-        let buttonView = Button {
-            onSelect(button.choice)
-        } label: {
-            Text(button.title)
-                .font(.system(size: 16, weight: .medium))
-                .frame(maxWidth: .infinity, minHeight: 38)
-        }
-        .controlSize(.large)
-
         if button.isDefault {
-            buttonView
-                .buttonStyle(.plain)
-                .foregroundStyle(.white)
-                .background(Color.accentColor, in: Capsule())
-                .contentShape(Capsule())
+            Button {
+                onSelect(button.choice)
+            } label: {
+                Text(button.title)
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity, minHeight: 38)
+                    .background(Color.accentColor, in: Capsule())
+                    .contentShape(Capsule())
+            }
+            .controlSize(.large)
+            .keyboardShortcut(.defaultAction)
+            .buttonStyle(.plain)
         } else {
-            buttonView
-                .buttonStyle(.bordered)
+            Button {
+                onSelect(button.choice)
+            } label: {
+                Text(button.title)
+                    .font(.system(size: 16, weight: .medium))
+                    .frame(maxWidth: .infinity, minHeight: 38)
+            }
+            .controlSize(.large)
+            .buttonStyle(.bordered)
         }
     }
 }

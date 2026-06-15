@@ -3,8 +3,8 @@
 <img src="Design/plainize-clip-logo.png" alt="Plainize Clip logo" width="128">
 
 Plainize Clip is a tiny faceless macOS utility that cleans the current text
-pasteboard and quits. It is a modern Swift/AppKit/SwiftUI successor inspired by
-[Plain Clip][plain-clip].
+pasteboard and quits. It is a modern Swift/AppKit/SwiftUI implementation
+inspired by [Plain Clip][plain-clip].
 
 The app is intentionally not a menu bar app and not a resident background app.
 Normal launch performs one pasteboard cleanup pass, then terminates.
@@ -135,18 +135,23 @@ general pasteboard round trip.
 ## Relationship To Plain Clip
 
 Plainize Clip borrows the spirit of [Plain Clip][plain-clip] by
-[Carsten Blüm][carsten-bluem]: stay invisible, do one job, and quit. Plain Clip
-is no longer available from the author's current site, but the original Plain
-Clip 2.5.2 ZIP is available through [Archive.org][plain-clip-archive].
+[Carsten Blüm][carsten-bluem]: stay invisible, do one job, and quit. Plainize
+Clip is an independent project and is not affiliated with Plain Clip or Blüm.
 
 In private email correspondence with Blüm in 2024, I asked about a
 Universal/Apple Silicon build or an open-source release of Plain Clip. He
 replied that Plain Clip was not intended to be abandoned, but that open-sourcing
 the older codebase had obstacles to resolve. In 2026, after noticing Plain Clip
-was still Intel-only, no longer available from the author's current site, and
-did not appear to have a source release, I built Plainize Clip as a separate
-modern implementation. It keeps similar cleanup options, but it is new
-Swift/AppKit/SwiftUI code for direct distribution.
+was not available from the author's current site, appeared to still be
+Intel-only, and did not appear to have a source release, I built Plainize Clip
+as a separate modern implementation.
+
+Blüm later clarified that Plain Clip is still in daily use by him and that he
+has resumed work on it, including an Apple Silicon build. Plainize Clip remains
+a separate Swift/AppKit/SwiftUI implementation for direct distribution. Readers
+interested in Plain Clip itself should refer to Blüm's site or contact him
+directly. An older Plain Clip 2.5.2 ZIP is available through
+[Archive.org][plain-clip-archive].
 
 ## License
 

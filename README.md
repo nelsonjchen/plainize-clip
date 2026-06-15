@@ -140,16 +140,6 @@ xcodebuild -project PlainizeClip.xcodeproj -scheme PlainizeClip -configuration D
 The tests cover the argument parser, individual cleaning fixtures, and a
 general pasteboard round trip.
 
-## Source Layout
-
-- `PlainizeClip/AppDelegate.swift`: launch routing, CLI mode, preferences flow
-- `PlainizeClip/Plainizer.swift`: string cleanup pipeline
-- `PlainizeClip/PlainizeOptions.swift`: defaults and persisted option keys
-- `PlainizeClip/PasteboardPlainizer.swift`: pasteboard read/write integration
-- `PlainizeClip/PreferencesWindowController.swift`: preferences window UI
-- `PlainizeClip/plainize-clip`: shell wrapper for CLI mode
-- `PlainizeClipTests/PlainizeClipTests.swift`: XCTest coverage
-
 ## Relationship To Plain Clip
 
 Plainize Clip borrows the spirit of [Plain Clip][plain-clip] by

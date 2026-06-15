@@ -118,7 +118,7 @@ to become empty.
 ## Project
 
 - Product: `Plainize Clip.app`
-- Bundle id: `com.mindflakes.PlainizeClip`
+- Bundle id: `com.mindflakes.plainize-clip`
 - Platform: macOS 13+
 - UI model: `LSUIElement` faceless app with an on-demand preferences window
 - Source: Swift, SwiftUI, AppKit, XCTest

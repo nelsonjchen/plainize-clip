@@ -115,14 +115,6 @@ dropping unsupported characters. For example, CJK, Korean, Arabic, Hebrew, and
 Cyrillic text are transliterated approximately instead of causing the clipboard
 to become empty.
 
-## Project
-
-- Product: `Plainize Clip.app`
-- Bundle id: `com.mindflakes.plainize-clip`
-- Platform: macOS 13+
-- UI model: `LSUIElement` faceless app with an on-demand preferences window
-- Source: Swift, SwiftUI, AppKit, XCTest
-
 ## Build
 
 ```bash

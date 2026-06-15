@@ -112,7 +112,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
-        welcomeDialogController = WelcomeDialogController.presentSheet(buttons: buttons, modalFor: parentWindow) { [weak self] choice in
+        welcomeDialogController = WelcomeDialogController.presentInfoWindow(buttons: buttons, over: parentWindow) { [weak self] choice in
             self?.welcomeDialogController = nil
             if choice == .openProjectPage {
                 self?.openProjectPage()
@@ -169,8 +169,10 @@ private struct WelcomeDialogButton: Identifiable {
 
 private final class WelcomeDialogController: NSWindowController {
     private var choice: WelcomeChoice = .dismiss
+    private let completion: ((WelcomeChoice) -> Void)?
 
-    init(buttons: [WelcomeDialogButton]) {
+    init(buttons: [WelcomeDialogButton], completion: ((WelcomeChoice) -> Void)? = nil) {
+        self.completion = completion
         let contentSize = NSSize(width: 380, height: 610)
         let window = NSPanel(
             contentRect: NSRect(origin: .zero, size: contentSize),
@@ -209,35 +211,51 @@ private final class WelcomeDialogController: NSWindowController {
         return controller.choice
     }
 
-    static func presentSheet(
+    static func presentInfoWindow(
         buttons: [WelcomeDialogButton],
-        modalFor parentWindow: NSWindow,
+        over parentWindow: NSWindow,
         completion: @escaping (WelcomeChoice) -> Void
     ) -> WelcomeDialogController {
-        let controller = WelcomeDialogController(buttons: buttons)
+        let controller = WelcomeDialogController(buttons: buttons, completion: completion)
         guard let window = controller.window else {
             completion(.dismiss)
             return controller
         }
 
-        parentWindow.beginSheet(window) { _ in
-            window.orderOut(nil)
-            controller.close()
-            completion(controller.choice)
-        }
+        parentWindow.addChildWindow(window, ordered: .above)
+        window.center(over: parentWindow)
+        window.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
         return controller
     }
 
     private func finish(with choice: WelcomeChoice) {
         self.choice = choice
-        if let window, let sheetParent = window.sheetParent {
-            sheetParent.endSheet(window)
+
+        if let completion {
+            if let window {
+                window.parent?.removeChildWindow(window)
+                window.orderOut(nil)
+            }
+            close()
+            completion(choice)
             return
         }
 
         NSApp.stopModal()
         window?.orderOut(nil)
         close()
+    }
+}
+
+private extension NSWindow {
+    func center(over parentWindow: NSWindow) {
+        let parentFrame = parentWindow.frame
+        let newOrigin = NSPoint(
+            x: parentFrame.midX - frame.width / 2,
+            y: parentFrame.midY - frame.height / 2
+        )
+        setFrameOrigin(newOrigin)
     }
 }
 

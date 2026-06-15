@@ -143,10 +143,10 @@ In private email correspondence with Blüm in 2024, I asked about a
 Universal/Apple Silicon build or an open-source release of Plain Clip. He
 replied that Plain Clip was not intended to be abandoned, but that open-sourcing
 the older codebase had obstacles to resolve. In 2026, after noticing Plain Clip
-was still Intel-only and no longer available from the author's current site, I
-built Plainize Clip as a separate modern implementation. It keeps similar
-cleanup options, but it is new Swift/AppKit/SwiftUI code for direct
-distribution.
+was still Intel-only, no longer available from the author's current site, and
+did not appear to have a source release, I built Plainize Clip as a separate
+modern implementation. It keeps similar cleanup options, but it is new
+Swift/AppKit/SwiftUI code for direct distribution.
 
 ## License
 

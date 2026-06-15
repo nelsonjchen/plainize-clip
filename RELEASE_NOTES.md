@@ -1,5 +1,12 @@
 # Release Notes
 
+## 0.3.1
+
+- Fixed the welcome dialog shown from Preferences so OK closes it reliably.
+- Normalized the app bundle identifier to `com.mindflakes.plainize-clip`.
+- Trimmed README maintenance details so the project page stays focused on
+  downloading, using, and understanding the app.
+
 ## 0.3.0
 
 - Added a first-run welcome dialog that explains Plainize Clip's launch, clean,

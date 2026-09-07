@@ -3427,7 +3427,7 @@
       }
     },
     "Replace smart quotes": {
-      "comment": "Toggle that replaces typographic quotes with straight quotes. Draft non-English translation; native-speaker review recommended.",
+      "comment": "Toggle that replaces typographic quotes and en/em dashes with ASCII punctuation. Keep the existing localization key; non-English translations need review for the added mention of dashes.",
       "localizations": {
         "ar": {
           "stringUnit": {
@@ -3456,7 +3456,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Replace smart quotes"
+            "value": "Replace smart quotes and dashes"
           }
         },
         "es": {

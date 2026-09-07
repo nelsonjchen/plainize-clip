@@ -32,12 +32,10 @@ enum Plainizer {
             text = text.replacingOccurrences(of: "\t", with: " ")
         }
 
-        if options.removeConsecutiveSpaces {
-            text.replaceRepeatedOccurrences(of: "  ", with: " ")
-        }
-
         if options.removeBlankLines {
-            text.replaceRepeatedOccurrences(of: "\n\n", with: "\n")
+            text = text.components(separatedBy: "\n")
+                .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
+                .joined(separator: "\n")
         }
 
         if options.removeSmartQuotes {
@@ -55,6 +53,11 @@ enum Plainizer {
 
         if options.convertToASCII {
             text = text.convertingToPlainASCII()
+        }
+
+        // ASCII conversion can introduce spaces when unsupported characters disappear.
+        if options.removeConsecutiveSpaces {
+            text.replaceRepeatedOccurrences(of: "  ", with: " ")
         }
 
         if options.trimWholeString {
@@ -227,7 +230,8 @@ private extension String {
             }
         }
 
-        if output.isEmpty && !trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        if output.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            && !trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             return "?"
         }
 

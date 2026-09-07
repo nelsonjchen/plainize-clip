@@ -131,6 +131,52 @@ final class PlainizeClipTests: XCTestCase {
         XCTAssertASCIIOnly(output)
     }
 
+    func testASCIIConversionFallsBackForUnsupportedContentSeparatedByWhitespace() {
+        for input in ["😀 😀", "😀\n😀", " \t😀 \t"] {
+            XCTAssertEqual(Plainizer.plainized(input, options: asciiOptions()), "?", input)
+        }
+        XCTAssertEqual(Plainizer.plainized(" \t\n ", options: asciiOptions()), "")
+    }
+
+    func testSpaceCollapsingRunsAfterASCIIConversionAndRemainsOptional() {
+        var options = asciiOptions()
+        XCTAssertEqual(Plainizer.plainized("a 😀 b", options: options), "a b")
+        options.removeConsecutiveSpaces = false
+        XCTAssertEqual(Plainizer.plainized("a 😀 b", options: options), "a  b")
+    }
+
+    func testBlankLineRemovalPreservesIndentationWithoutLineTrimming() {
+        var options = PlainizeOptions.standard
+        options.trimLeadingWhitespace = false
+        options.trimTrailingWhitespace = false
+        options.trimWholeString = false
+        options.removeHardWraps = false
+        options.replaceTabs = false
+        options.removeConsecutiveSpaces = false
+        let input = "\n  a  \n \t\n\n\tb\t\n  "
+        XCTAssertEqual(Plainizer.plainized(input, options: options), "  a  \n\tb\t")
+        options.removeBlankLines = false
+        XCTAssertEqual(Plainizer.plainized(input, options: options), input)
+    }
+
+    func testJoiningWrappedLinesPreservesParagraphBoundaries() {
+        var options = PlainizeOptions.standard
+        options.removeBlankLines = false
+        XCTAssertEqual(Plainizer.plainized("one\ntwo\n\nthree", options: options), "one two\n\nthree")
+        options.removeBlankLines = true
+        XCTAssertEqual(Plainizer.plainized("one\ntwo\n\nthree", options: options), "one two\nthree")
+        options.removeHardWraps = false
+        XCTAssertEqual(Plainizer.plainized("one\ntwo\n\nthree", options: options), "one\ntwo\nthree")
+    }
+
+    func testSmartPunctuationReplacementWithoutASCIIConversion() {
+        var options = PlainizeOptions.standard
+        let input = "“Hi” it’s—«ok» ‘yes’–done"
+        XCTAssertEqual(Plainizer.plainized(input, options: options), "\"Hi\" it's-\"ok\" 'yes'-done")
+        options.removeSmartQuotes = false
+        XCTAssertEqual(Plainizer.plainized(input, options: options), input)
+    }
+
     func testUnicodeExamplePreviewSampleIsCompactAndASCIIOnly() {
         let output = Plainizer.plainized("中文 한국어 العربية cafe\u{0301}", options: asciiOptions())
 
@@ -194,12 +240,12 @@ final class PlainizeClipTests: XCTestCase {
     }
 
     func testPasteboardRoundTrip() {
-        let pasteboard = NSPasteboard.general
-        let snapshot = PasteboardSnapshot.capture(from: pasteboard)
-        defer { snapshot.restore(to: pasteboard) }
+        let pasteboard = NSPasteboard.withUniqueName()
+        defer { pasteboard.releaseGlobally() }
 
         pasteboard.clearContents()
         pasteboard.setString(" a\t ", forType: .string)
+        pasteboard.setData(Data([1, 2, 3]), forType: NSPasteboard.PasteboardType("com.mindflakes.plainize-clip.test"))
 
         let changed = PasteboardPlainizer.clean(
             pasteboard,
@@ -225,9 +271,8 @@ final class PlainizeClipTests: XCTestCase {
     }
 
     func testNonTextPasteboardIsLeftUnchanged() {
-        let pasteboard = NSPasteboard.general
-        let snapshot = PasteboardSnapshot.capture(from: pasteboard)
-        defer { snapshot.restore(to: pasteboard) }
+        let pasteboard = NSPasteboard.withUniqueName()
+        defer { pasteboard.releaseGlobally() }
 
         let type = NSPasteboard.PasteboardType("com.mindflakes.plainize-clip.test")
         let data = Data([1, 2, 3])
@@ -270,9 +315,8 @@ final class PlainizeClipTests: XCTestCase {
     }
 
     private func cleanPasteboardString(_ input: String, options: PlainizeOptions) -> String {
-        let pasteboard = NSPasteboard.general
-        let snapshot = PasteboardSnapshot.capture(from: pasteboard)
-        defer { snapshot.restore(to: pasteboard) }
+        let pasteboard = NSPasteboard.withUniqueName()
+        defer { pasteboard.releaseGlobally() }
 
         pasteboard.clearContents()
         pasteboard.setString(input, forType: .string)
@@ -290,26 +334,5 @@ final class PlainizeClipTests: XCTestCase {
             file: file,
             line: line
         )
-    }
-}
-
-private struct PasteboardSnapshot {
-    let values: [(NSPasteboard.PasteboardType, Data)]
-
-    static func capture(from pasteboard: NSPasteboard) -> PasteboardSnapshot {
-        let values = (pasteboard.types ?? []).compactMap { type -> (NSPasteboard.PasteboardType, Data)? in
-            guard let data = pasteboard.data(forType: type) else {
-                return nil
-            }
-            return (type, data)
-        }
-        return PasteboardSnapshot(values: values)
-    }
-
-    func restore(to pasteboard: NSPasteboard) {
-        pasteboard.clearContents()
-        for (type, data) in values {
-            pasteboard.setData(data, forType: type)
-        }
     }
 }

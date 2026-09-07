@@ -72,7 +72,7 @@ Preference options:
 - Trim each line: removes leading and/or trailing whitespace from every line.
 - Trim whole clipboard: removes whitespace from the start and end of the full
   clipboard string.
-- Remove blank lines: collapses repeated blank lines.
+- Remove blank lines: removes empty lines and lines containing only whitespace.
 - Join wrapped lines: replaces hard line breaks between non-empty lines with a
   space, useful for copied hard-wrapped prose.
 - Replace tabs with spaces: converts tab characters to plain spaces.
@@ -80,7 +80,7 @@ Preference options:
 - Remove invisible control characters: removes low ASCII controls except tab
   and newline, and cleans common invisible spacing characters such as zero-width
   spaces.
-- Replace smart quotes: converts curly quotes, guillemets, en dashes, and em
+- Replace smart quotes and dashes: converts curly quotes, guillemets, en dashes, and em
   dashes to plain ASCII punctuation.
 - Normalize Unicode: converts decomposed Unicode sequences such as `e` plus a
   combining acute accent into their precomposed form, such as `é`.
@@ -129,8 +129,8 @@ The debug app appears under Xcode DerivedData as `Plainize Clip.app`.
 xcodebuild -project PlainizeClip.xcodeproj -scheme PlainizeClip -configuration Debug test
 ```
 
-The tests cover the argument parser, individual cleaning fixtures, and a
-general pasteboard round trip.
+The tests cover the argument parser, individual cleaning fixtures, and
+isolated pasteboard round trips.
 
 ## Relationship To Plain Clip
 

@@ -1,5 +1,17 @@
 # Release Notes
 
+## 0.3.3
+
+- Fixed ASCII conversion emptying unsupported content separated by whitespace,
+  and ensured space collapsing also handles spaces left by conversion.
+- Made blank-line removal recognize whitespace-only lines independently of
+  line trimming.
+- Fixed the parent line-trimming checkbox to show a mixed state when only one
+  direction is enabled, and kept both child controls available.
+- Expanded the preferences preview to demonstrate smart punctuation and joined
+  wrapped lines, and clarified the English smart-quotes label to mention dashes.
+- Isolated clipboard tests from the user's clipboard and added regression tests.
+
 ## 0.3.2
 
 - Fixed the Preferences info dialog so the whole OK button responds to clicks,
